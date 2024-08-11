@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Here</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styling for the pay_here page */
+        .container {
+            width: 70%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #8996df;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .btn-pay {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-pay:hover {
+            background-color: #45a049; /* Darker green */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Subscribe to Our Service</h1>
+        </div>
+        <div class="content">
+            <p>Welcome to our premium stock analysis platform! We offer detailed insights and analysis on the top-performing stocks, tailored to help you make informed investment decisions.</p>
+            <p>Our subscription provides you with access to:</p>
+            <ul>
+                <li>In-depth analysis of the Nifty 100 stocks</li>
+                <li>Top 50 stocks to buy based on market data and trends</li>
+                <li>Detailed reports on top gainers and losers</li>
+                <li>Real-time updates and notifications on market movements</li>
+                <li>Advanced charting and technical indicators</li>
+            </ul>
+            <p>Join us today to take advantage of our comprehensive stock market insights and stay ahead of the curve.</p>
+        </div>
+        <div class="button-container">
+            <button id="checkout-button" class="btn-pay">Pay Now</button>
+        </div>
+    </div>
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_51LY1QBSIqQO61hDB0mRcZBEQC5j9IY8AnoJ0zsK0ZdEwS6fTJS9uKy0mh1pYQLdrparlPfOFDWUtsNxIrWLzcdsO00xEAONr2W');  // Replace with your Stripe publishable key
+
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function () {
+            fetch('/create-checkout-session', {
+                method: 'POST',
+            })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (sessionId) {
+                return stripe.redirectToCheckout({ sessionId: sessionId.id });
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

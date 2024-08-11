@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy and Sell Points</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8996df;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #d6e7f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar li {
+            display: inline-block;
+        }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            flex: 0 0 150px;
+            font-weight: bold;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-size: 1em;
+        }
+
+        .buttons button:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Buy and Sell Points</h1>
+        </div>
+        
+        <div class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/all_stocks">All Stocks</a></li>
+                <li><a href="/sectors">Sectors</a></li>
+                <li><a href="/buy_and_sell_points">Buy & Sell Points</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Analyze Stock</h2>
+            <form method="POST" action="/buy_and_sell_points">
+                <div class="form-row">
+                    <label for="stock_symbol">Stock Symbol:</label>
+                    <input type="text" id="stock_symbol" name="stock_symbol" placeholder="e.g., HDFCBANK.NS" required>
+                </div>
+                <div class="form-row">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-row">
+                    <label for="end_date">End Date:</label>
+                    <input type="date" id="end_date" name="end_date" required>
+                </div>
+                <div class="buttons">
+                    <button type="submit">Analyze</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Analysis Results</h2>
+            <div id="plotly-graph"></div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Stock Analysis</p>
+        </div>
+    </div>
+
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        // Plotly graph rendering script will be inserted here by Flask
+    </script>
+</body>
+</html>

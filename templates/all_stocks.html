@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Stocks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8996df;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #d6e7f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            white-space: nowrap; /* Prevents text wrapping */
+        }
+        .stock-name {
+            width: 20%;
+        }
+        .change-positive {
+            color: green;
+        }
+        .change-negative {
+            color: red;
+        }
+        th:first-child, td:first-child {
+            width: 20%; /* Larger width for Stock Name */
+        }
+        th:not(:first-child), td:not(:first-child) {
+            width: 7%; /* Smaller width for other columns */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>All Stocks</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="stock-name">Stock Name</th>
+                    <th>CMP</th> <!-- Added CMP header -->
+                    <th>1D Change</th>
+                    <th>1W Change</th>
+                    <th>1M Change</th>
+                    <th>6M Change</th>
+                    <th>1Y Change</th>
+                    <th>Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock['name'] }}</td>
+                    <td>{{ stock['current_price'] }}</td> <!-- Added CMP data -->
+                    <td class="{{ 'change-positive' if stock['1D_change'] > 0 else 'change-negative' if stock['1D_change'] < 0 else '' }}">{{ stock['1D_change'] }}%</td>
+                    <td class="{{ 'change-positive' if stock['1W_change'] > 0 else 'change-negative' if stock['1W_change'] < 0 else '' }}">{{ stock['1W_change'] }}%</td>
+                    <td class="{{ 'change-positive' if stock['1M_change'] > 0 else 'change-negative' if stock['1M_change'] < 0 else '' }}">{{ stock['1M_change'] }}%</td>
+                    <td class="{{ 'change-positive' if stock['6M_change'] > 0 else 'change-negative' if stock['6M_change'] < 0 else '' }}">{{ stock['6M_change'] }}%</td>
+                    <td class="{{ 'change-positive' if stock['1Y_change'] > 0 else 'change-negative' if stock['1Y_change'] < 0 else '' }}">{{ stock['1Y_change'] }}%</td>
+                    <td>{{ stock['volume'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

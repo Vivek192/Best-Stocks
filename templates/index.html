@@ -1,0 +1,131 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Investment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Stock Investment</h1>
+        </div>
+        <nav class="navbar">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="{{ url_for('all_stocks') }}">All Stocks</a></li>
+                <li><a href="{{ url_for('top_gainers_and_losers') }}">Top Gainers and Losers</a></li>
+                <li><a href="{{ url_for('best_50_stocks_to_buy') }}">Best 50 Stocks to Buy</a></li>
+                <li><a href="{{ url_for('buy_and_sell_points') }}">Buy and Sell Points</a></li>
+                <li><a href="{{ url_for('sectors') }}">Sectors</a></li> <!-- Added Sectors link -->
+                <li><a href="{{ url_for('pay_here') }}">Pay Here</a></li>
+            </ul>
+        </nav>
+        <form>
+            <div class="section" id="section1">
+                <h2>Section 1</h2>
+                <div class="form-row">
+                    <label for="purpose">Purpose:</label>
+                    <select id="purpose" name="purpose">
+                        <option value="stock_investment">Stock Investment</option>
+                        <option value="trading">Trading</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="portfolio_budget">Portfolio Budget:</label>
+                    <input type="number" id="portfolio_budget" name="portfolio_budget">
+                </div>
+                <div class="form-row">
+                    <label for="stock_limit">Stock Limit:</label>
+                    <input type="number" id="stock_limit" name="stock_limit">
+                </div>
+                <div class="form-row">
+                    <label for="active_portfolio_rule">Active Portfolio Rule:</label>
+                    <select id="active_portfolio_rule" name="active_portfolio_rule">
+                        <option value="nifty100">NIFTY100</option>
+                        <option value="sensex">SENSEX</option>
+                    </select>
+                </div>
+                <div class="form-row full-width">
+                    <label for="date_of_creation">Date of Creation:</label>
+                    <span id="date_of_creation">2023-07-15</span>
+                </div>
+                <div class="form-row buttons">
+                    <button type="button">Reset</button>
+                    <button type="button">Reset++</button>
+                    <button type="button">Delete</button>
+                </div>
+            </div>
+
+            <div class="section" id="section2">
+                <h2>Section 2</h2>
+                <div class="form-row full-width">
+                    <label for="aps_status">APS Status:</label>
+                    <span id="aps_status">Inactive (Expired on Tuesday, March 12, 2024)</span>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sms_alert" name="sms_alert">
+                    <label for="sms_alert">Yes, I would like to receive SMS alert for report</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="auto_call" name="auto_call">
+                    <label for="auto_call">Yes, I would like to receive auto call reminder</label>
+                </div>
+                <div class="form-row">
+                    <button class="btn green">Activate Subscription</button>
+                </div>
+                <div class="form-row">
+                    <label for="reporting_period">Reporting Period:</label>
+                    <select id="reporting_period" name="reporting_period">
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="report_type_primary">Report Type (Primary):</label>
+                    <select id="report_type_primary" name="report_type_primary">
+                        <option value="details">Details</option>
+                        <option value="summary">Summary</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label for="report_type_secondary">Report Type (Secondary):</label>
+                    <select id="report_type_secondary" name="report_type_secondary">
+                        <option value="short">Short</option>
+                        <option value="detailed">Detailed</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <button class="btn blue">Send Sample Report</button>
+                </div>
+            </div>
+
+            <div class="section" id="section3">
+                <h2>Section 3</h2>
+                <div class="stats">
+                    <p>Cash Available: ₹ 572944.10</p>
+                    <p>Stocks Current Value: ₹ 528799.20</p>
+                    <p>Net Worth: ₹ 1101743.00</p>
+                    <p>Per Stock Allocation: ₹ 55087.16</p>
+                    <p>Profit/Loss: ₹ 71698.75 (15.69%)</p>
+                    <p>Realized Profit/Loss: ₹ 30044.60</p>
+                </div>
+                <div class="form-row buttons">
+                    <button class="btn blue">Add Stock</button>
+                    <button class="btn blue">Add Multiple Stocks</button>
+                    <button class="btn blue">Remove Stock</button>
+                    <button class="btn blue">Remove Stock ++</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>Last Update: Tuesday, June 25, 2024</p>
+                <p>Stock Count: 20/20</p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

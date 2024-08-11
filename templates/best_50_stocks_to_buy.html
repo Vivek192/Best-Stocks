@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 50 Nifty Stocks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8996df;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: #d6e7f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            white-space: nowrap; /* Prevents text wrapping */
+        } 
+        th:first-child, td:first-child {
+            width: 20%; /* Larger width for Stock Name */
+        }
+        th:not(:first-child), td:not(:first-child) {
+            width: 7%; /* Smaller width for other columns */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Best 50 Stocks to Buy Now!!!</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Current Market Price</th>
+                    <th>P/E Ratio</th>
+                    <th>P/B Ratio</th>
+                    <th>Dividend Yield</th>
+                    <th>EPS</th>
+                    <th>SMA 50</th>
+                    <th>SMA 200</th>
+                    <th>RSI</th>
+                    <th>MACD</th>
+                    <th>Bollinger Bands Upper</th>
+                    <th>Bollinger Bands Lower</th>
+                    <th>Total Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock['Stock Name'] }}</td>
+                    <td>{{ stock['Current Market Price'] }}</td>
+                    <td>{{ stock['P/E Ratio'] }}</td>
+                    <td>{{ stock['P/B Ratio'] }}</td>
+                    <td>{{ stock['Dividend Yield'] }}</td>
+                    <td>{{ stock['EPS'] }}</td>
+                    <td>{{ stock['SMA 50'] }}</td>
+                    <td>{{ stock['SMA 200'] }}</td>
+                    <td>{{ stock['RSI'] }}</td>
+                    <td>{{ stock['MACD'] }}</td>
+                    <td>{{ stock['Bollinger Bands Upper'] }}</td>
+                    <td>{{ stock['Bollinger Bands Lower'] }}</td>
+                    <td>{{ stock['Total Score'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
